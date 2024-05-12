@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+
 @Controller
 @CrossOrigin(origins = "*")
 @RequestMapping("/tareas")
@@ -31,7 +33,7 @@ public class TareasController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseDto> saveTarea(@RequestBody TareasDTO tareasDTO){
+    public ResponseEntity<ResponseDto> saveTarea(@RequestBody TareasDTO tareasDTO) throws ParseException {
 
     return  new ResponseEntity<ResponseDto>(tareaSaveUseCase.excecute(tareasDTO), HttpStatus.CREATED);
 
@@ -40,7 +42,7 @@ public class TareasController {
 @GetMapping("/all")
 public ResponseEntity<ResponseDto> findAllTarea(){
 
-    return  new ResponseEntity (tareasFindAllUseCase.findAlltareas(), HttpStatus.CREATED);
+    return  new ResponseEntity (tareasFindAllUseCase.findAlltareas(), HttpStatus.OK);
 
 }
 

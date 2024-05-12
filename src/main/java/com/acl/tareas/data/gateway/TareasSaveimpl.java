@@ -8,6 +8,8 @@ import com.acl.tareas.util.Constants;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -18,14 +20,17 @@ import java.util.Date;
 public class TareasSaveimpl implements  TareasSave{
     private final TareasRepository tareasRepository;
     @Override
-    public ResponseDto saveTarea(TareasDTO tareasDTO) {
+    public ResponseDto saveTarea(TareasDTO tareasDTO) throws ParseException {
 
 
         Date fechaCrea = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+        String fechaConFormato= formato.format(fechaCrea);
+        Date fechaConvertida = formato.parse(fechaConFormato);
 
         TareasEntity tareasEntity = new TareasEntity(
                 tareasDTO.getDescripcion(),
-                fechaCrea,
+                fechaConvertida,
                 tareasDTO.isVigente());
 
         tareasRepository.save(tareasEntity);

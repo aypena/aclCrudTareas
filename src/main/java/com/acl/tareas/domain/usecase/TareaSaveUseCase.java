@@ -6,6 +6,7 @@ import com.acl.tareas.domain.model.ResponseDto;
 import com.acl.tareas.domain.model.TareasDTO;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 
 
 @Service
@@ -18,7 +19,7 @@ public class TareaSaveUseCase {
     }
 
 
-    public ResponseDto excecute(TareasDTO tareasDTO){
+    public ResponseDto excecute(TareasDTO tareasDTO) throws ParseException {
 
         return  tareasSave.saveTarea(tareasDTO);
     }
