@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 @AllArgsConstructor
-public class TareasFindAllImpl  implements  TareasFindAll{
+public class TareasFindAllGatewayImpl implements  TareasFindAll{
     private ListTareasEntityToListTareasDTOMapper listTareasEntityToListTareasDTOMapper;
 
     private final TareasRepository tareasRepository;
