@@ -11,7 +11,6 @@ import java.util.Date;
 @Entity
 @Table
 public class TareasEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer identificador;

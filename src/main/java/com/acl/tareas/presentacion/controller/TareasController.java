@@ -31,22 +31,15 @@ public class TareasController {
         this.tareasDeleteByIdUseCase = tareasDeleteByIdUseCase;
         this.tareasFindAllUseCase = tareasFindAllUseCase;
     }
-
     @PostMapping
     public ResponseEntity<ResponseDto> saveTarea(@RequestBody TareasDTO tareasDTO) throws ParseException {
-
     return  new ResponseEntity<ResponseDto>(tareaSaveUseCase.excecute(tareasDTO), HttpStatus.CREATED);
 
 }
-
 @GetMapping("/all")
 public ResponseEntity<ResponseDto> findAllTarea(){
-
     return  new ResponseEntity (tareasFindAllUseCase.findAlltareas(), HttpStatus.OK);
-
 }
-
-
     @DeleteMapping("/{id}")
     public  ResponseEntity deleteTareaById(@PathVariable("id") Integer identificador){
         return new ResponseEntity(tareasDeleteByIdUseCase.deleteTareaById(identificador),HttpStatus.OK);
